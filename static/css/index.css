@@ -1,0 +1,314 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.publication-authors {}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.publication-body img {}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb {
+  font-size: smaller;
+}
+
+
+/* 添加在index.css中 */
+.custom-hero {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.custom-hero .title,
+.custom-hero .subtitle {
+  color: white !important;
+}
+
+.custom-hero .button.is-white.is-outlined {
+  border-color: white;
+  color: white;
+}
+
+.custom-hero .button.is-white.is-outlined:hover {
+  background-color: white;
+  color: #4CAF50;
+}
+
+/* Custom section titles */
+.section-title {
+  color: #4CAF50 !important;
+  font-size: 1.8rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Content styling */
+.section-content {
+  color: #000000;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Code block styling */
+.code-block {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* Image grid layout */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.image-grid img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+  transform: scale(1.02);
+}
+
+/* Button hover effects */
+.button.is-white.is-outlined:hover {
+  background-color: white !important;
+  color: #4CAF50 !important;
+}
+
+/* Section title styling */
+.section-title {
+  color: #4CAF50 !important;
+  font-size: 1.8rem !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+  width: 100%;
+}
+
+/* Section container for centering */
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Citation notice text */
+.citation-notice {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #333;
+}
+
+/* Ensure content boxes are properly centered */
+.code-block {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .code-block {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Button row styling */
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* Video container */
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .button-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-hero .title {
+    font-size: 1.8rem !important;
+  }
+
+  .custom-hero .subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Buttons container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* Left-aligned content */
+.section-content {
+  text-align: left;
+}
+
+/* Footer styling */
+.footer-content {
+  text-align: center;
+  padding: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Consistent section styling */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+/* Light background sections */
+.hero.is-light {
+  background-color: #f5f5f5;
+}

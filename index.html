@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rethinking Surgical Smoke: Dataset</title>
+  
+  <meta name="description" content="Rethinking Surgical Smoke - A Type-Aware Laparoscopic Video Desmoking Method and Dataset">
+  <meta property="og:title" content="Rethinking Surgical Smoke" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Bulma Framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <style>
+    /* -------------------------------------------------------------------------
+       Core Styles
+       ------------------------------------------------------------------------- */
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background-color: #ffffff;
+      color: #4a4a4a;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .title, .subtitle {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    /* -------------------------------------------------------------------------
+       Hero & Buttons (Matched to Paper Website)
+       ------------------------------------------------------------------------- */
+    .hero.is-light {
+        background-color: #f5f5f5;
+    }
+
+    .publication-title {
+      font-weight: 700;
+      color: #363636;
+      margin-bottom: 1rem !important;
+    }
+
+    /* Gradient Buttons */
+    .link-btn {
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      color: #fff !important;
+      border: none;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s ease;
+      font-weight: 600;
+    }
+
+    .link-btn .icon {
+      margin-right: 0.4em;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+      color: #fff !important;
+    }
+
+    .link-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    
+    /* -------------------------------------------------------------------------
+       Dataset File Tree (Fixed Indentation)
+       ------------------------------------------------------------------------- */
+    .file-tree-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #eaeaea;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    
+    .file-tree-header {
+        background: #f8f9fa;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eaeaea;
+        font-weight: bold;
+        color: #555;
+        display: flex;
+        align-items: center;
+    }
+
+    .file-tree-content {
+      padding: 20px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 0.95rem;
+      color: #24292e;
+    }
+
+    .tree-item {
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+      transition: background 0.1s;
+      position: relative;
+    }
+    
+    .tree-item:hover {
+        background: rgba(0,0,0,0.02);
+        border-radius: 4px;
+    }
+
+    /* Fixed Indentation Logic */
+    /* Assuming flat structure, margin-left must increase for each level */
+    .indent-0 { margin-left: 0px; }
+    .indent-1 { margin-left: 25px; border-left: 1px solid #eee; padding-left: 10px; }
+    .indent-2 { margin-left: 50px; border-left: 1px solid #eee; padding-left: 10px; }
+    .indent-3 { margin-left: 75px; border-left: 1px solid #eee; padding-left: 10px; }
+
+    /* Icons */
+    .icon-folder { color: #54aeff; margin-right: 8px; font-size: 1.1em; }
+    .icon-file { color: #6a737d; margin-right: 8px; }
+    .icon-video { color: #e36209; margin-right: 8px; } 
+    
+    .file-name { flex-grow: 1; }
+
+    .file-meta {
+      font-size: 0.75rem;
+      color: #6a737d;
+      background: #f1f3f5;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 10px;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    /* -------------------------------------------------------------------------
+       Visual Elements
+       ------------------------------------------------------------------------- */
+    .video-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+      background: #000;
+      margin: 0 auto;
+      max-width: 850px;
+    }
+    
+    .video-container img { width: 100%; display: block; }
+    
+    .pipeline-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border: 1px solid #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero is-light">
+    <div class="hero-body py-5">
+      <div class="container is-max-desktop has-text-centered">
+
+        <h1 class="title is-2 publication-title">
+          Rethinking Surgical Smoke: <br>
+          <span class="has-text-link-dark">A Type-Aware Laparoscopic Video Desmoking Method and Dataset (Dataset Website)</span>
+        </h1>
+
+        <p class="has-text-weight-semibold mt-2" style="font-style: italic; color: #b22222; letter-spacing: 0.03em;">
+          Accepted at <strong>AAAI&nbsp;2026</strong>
+        </p>
+
+        <!-- Authors -->
+        <div class="is-size-5 mt-4 publication-authors">
+          <span><strong>Qifan Liang</strong><sup>1,2,5</sup></span>,
+          <span><strong>Junlin Li</strong><sup>3</sup></span>,
+          <span><strong>Zhen Han*</strong><sup>1,2</sup></span>,
+          <span><strong>Xihao Wang</strong><sup>1,2</sup></span>,
+          <span><strong>Zhongyuan Wang</strong><sup>1,2</sup></span>,
+          <span><strong>Bin Mei</strong><sup>4</sup></span>
+        </div>
+
+        <div class="is-size-6 has-text-grey mt-2">
+          <p><sup>1</sup> National Engineering Research Center for Multimedia Software, School of Computer Science, Wuhan University, China</p>
+          <p><sup>2</sup> Hubei Key Laboratory of Multimedia and Network Communication Engineering, School of Computer Science, Wuhan University, China</p>
+          <p><sup>3</sup> School of Cyber Science and Engineering, Wuhan University, China</p>
+          <p><sup>4</sup> Zhongnan Hospital, Wuhan University, China</p>
+          <p><sup>5</sup> National University of Singapore, Singapore</p>
+        </div>
+        <p class="has-text-grey-light mt-1">* Corresponding author</p>
+
+        <!-- Buttons -->
+        <div class="link-group mt-5">
+          <a href="https://simon-leong.github.io/STSVD/" target="_blank" class="external-link button link-btn is-rounded">
+            <span class="icon"><i class="fas fa-globe"></i></span>
+            <span>Paper Website</span>
+          </a>
+          
+          <a href="https://pan.baidu.com/s/1plMCv63mMTpyWIpZK3cuvA" target="_blank" class="external-link button link-btn is-rounded">
+            <span class="icon"><i class="fas fa-cloud-download-alt"></i></span>
+            <span>Baidu Netdisk</span>
+          </a>
+
+          <a href="https://drive.google.com/drive/folders/1LRBvJNVl-d2yFvnLwfNMXzJY1xq8fOPN?usp=sharing" target="_blank" class="external-link button link-btn is-rounded">
+            <span class="icon"><i class="fab fa-google-drive"></i></span>
+            <span>Google Drive</span>
+          </a>
+          
+          <a href="https://arxiv.org/abs/2512.02780" target="_blank" class="external-link button link-btn is-rounded">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>Arxiv Paper</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VISUAL DEMO -->
+  <section class="section" style="padding-bottom: 1rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+            <h2 class="title is-3 has-text-centered" style="color: #2c3e50;">Visual Demo</h2>
+            <div class="video-container">
+                <img src="static/videos/compressed_output2_grid.gif" alt="Desmoking Demo">
+            </div>
+            <h2 class="subtitle is-6 has-text-centered mt-3" style="color: #666; font-style: italic;">
+              Dataset Overview: From top to bottom are Diffusion Smoke, Ambient Smoke, and their entanglement, along with their corresponding GT smoke masks.
+            </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABSTRACT -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+    Electrocautery or lasers will inevitably generate surgical smoke, which hinders the visual guidance of laparoscopic videos for surgical procedures.
+    The surgical smoke can be classified into different types based on its motion patterns, leading to distinctive spatio-temporal characteristics across smoky laparoscopic videos.
+    However, existing desmoking methods fail to account for such smoke-type-specific distinctions.
+    Therefore, we propose the first <strong>S</strong>moke-<strong>T</strong>ype-<strong>A</strong>ware Laparoscopic Video Desmoking <strong>Net</strong>work (STANet) by introducing two smoke types:
+    <strong>Diffusion Smoke</strong> and <strong>Ambient Smoke</strong>.
+    Specifically, a smoke mask segmentation sub-network is designed to jointly conduct smoke mask and smoke type predictions based on the attention-weighted mask aggregation,
+    while a smokeless video reconstruction sub-network is proposed to perform specially desmoking on smoky features guided by two types of smoke mask.
+    To address the entanglement challenges of two smoke types, we further embed a coarse-to-fine disentanglement module into the mask segmentation sub-network,
+    which yields more accurate disentangled masks through the smoke-type-aware cross attention between non-entangled and entangled regions.
+    In addition, we also construct the first large-scale synthetic video desmoking dataset with smoke type annotations.
+    Extensive experiments demonstrate that our method not only outperforms state-of-the-art approaches in quality evaluations,
+    but also exhibits superior generalization across multiple downstream surgical tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DATASET STRUCTURE SECTION -->
+  <section class="section hero is-light" style="background-color: #f8f9fa;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+            
+            <h2 class="title is-3" style="font-weight: 900; color: #b22222; margin-bottom: 1.5rem;">
+                <span class="icon is-medium has-text-danger"><i class="fas fa-fire"></i></span>
+                Dataset Structure
+                <span class="icon is-medium has-text-danger"><i class="fas fa-fire"></i></span>
+            </h2>
+
+            <p class="has-text-centered mb-5" style="max-width: 800px; margin: 0 auto; color: #555;">
+                The dataset is organized hierarchically. Below is the directory tree structure for <strong>STSVD</strong>.
+            </p>
+        
+            <div class="file-tree-card has-text-left">
+                <div class="file-tree-header">
+                    <i class="fas fa-folder-tree" style="margin-right: 10px;"></i> Directory Tree
+                </div>
+                <div class="file-tree-content">
+                    <!-- Root -->
+                    <div class="tree-item indent-0">
+                        <i class="fas fa-folder icon-folder"></i>
+                        <span class="file-name"><strong>STSVD</strong></span>
+                        <span class="file-meta">Root Directory</span>
+                    </div>
+
+                    <!-- Img Dir -->
+                    <div class="tree-item indent-1">
+                        <i class="fas fa-folder-open icon-folder"></i>
+                        <span class="file-name">img_dir</span>
+                    </div>
+                    
+                    <!-- Files inside Img Dir -->
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">with_smoke1.mp4</span>
+                    </div>
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">with_smoke2.mp4</span>
+                    </div>
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-ellipsis-v" style="margin-right: 8px; color: #ccc; width: 14px; text-align: center;"></i>
+                        <span class="file-name" style="color: #999; font-style: italic;">... sequence ...</span>
+                    </div>
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">with_smoke120.mp4</span>
+                        <span class="file-meta">120 files</span>
+                    </div>
+
+                    <!-- Clean Dir -->
+                    <div class="tree-item indent-1">
+                        <i class="fas fa-folder-open icon-folder"></i>
+                        <span class="file-name">clean_dir</span>
+                    </div>
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">without_smoke1.mp4</span>
+                    </div>
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">without_smoke120.mp4</span>
+                        <span class="file-meta">120 files</span>
+                    </div>
+
+                    <!-- Ann Dir -->
+                    <div class="tree-item indent-1">
+                        <i class="fas fa-folder-open icon-folder"></i>
+                        <span class="file-name">ann_dir</span>
+                        <span class="file-meta">Annotations</span>
+                    </div>
+                    
+                    <!-- Diffusion Smoke -->
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-folder icon-folder"></i>
+                        <span class="file-name">diffusion_smoke</span>
+                    </div>
+                    <div class="tree-item indent-3">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">diff_smoke1.mp4 ...</span>
+                        <span class="file-meta">80 files</span>
+                    </div>
+
+                    <!-- Ambient Smoke -->
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-folder icon-folder"></i>
+                        <span class="file-name">ambient_smoke</span>
+                    </div>
+                    <div class="tree-item indent-3">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">amb_smoke41.mp4 ...</span>
+                        <span class="file-meta">80 files</span>
+                    </div>
+
+                    <!-- Entangled Smoke -->
+                    <div class="tree-item indent-2">
+                        <i class="fas fa-folder icon-folder"></i>
+                        <span class="file-name">entangled_smoke</span>
+                    </div>
+                    <div class="tree-item indent-3">
+                        <i class="fas fa-file-video icon-video"></i>
+                        <span class="file-name">ent_smoke41.mp4 ...</span>
+                        <span class="file-meta">40 files</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATISTICS SECTION -->
+  <section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Dataset Statistics</h2>
+        <div class="columns is-centered">
+            <div class="column is-10">
+                <img src="static/images/pineline.png" alt="Dataset Statistics" class="pipeline-image">
+                <p class="subtitle is-6 has-text-centered mt-4" style="color: #888;">
+                    Overview of the data generation pipeline and statistical distribution.
+                </p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{liang2025rethinkingsurgicalsmokesmoketypeaware,
+      title={Rethinking Surgical Smoke: A Smoke-Type-Aware Laparoscopic Video Desmoking Method and Dataset}, 
+      author={Qifan Liang and Junlin Li and Zhen Han and Xihao Wang and Zhongyuan Wang and Bin Mei},
+      year={2025},
+      eprint={2512.02780},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2512.02780}, 
+}</code></pre>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p class="is-size-7">
+          <strong>Rethinking Surgical Smoke</strong> dataset release page.<br>
+          <span style="color: #b5b5b5;">Template adapted from the AAAI 2026 Paper Website.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
